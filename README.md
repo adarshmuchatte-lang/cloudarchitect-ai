@@ -1,255 +1,352 @@
-[Uploading README (9).md…]()
+[Uploading README (10).md…]()
 <div align="center">
 
-<img src="assets/readme/hero.gif" alt="Animated neon CloudArchitect AI hero with a holographic cloud and connected cloud-service nodes" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:050B17,50:0B5FFF,100:00D4FF&height=240&section=header&text=CloudArchitect%20AI&fontSize=62&fontColor=ffffff&fontAlignY=38&desc=Design%20the%20cloud.%20Visualize%20the%20intelligence.&descSize=20&descAlignY=60&animation=fadeIn" alt="CloudArchitect AI banner" width="100%"/>
 
-# CLOUDARCHITECT AI
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=3200&pause=900&color=00D4FF&center=true&vCenter=true&width=760&lines=Requirements+%E2%86%92+Deterministic+AWS+architecture;Amazon+Bedrock+explains.+Rules+decide.;Interactive+3D-style+architecture+studio;Serverless.+Secure.+Deployable+in+one+command." alt="Typing animation" />
+</a>
 
-### DESIGN THE CLOUD. INTELLIGENTLY.
+<br/>
 
-**An explainable AWS architecture recommendation studio.**  
-Deterministic rules choose the services. Amazon Bedrock can explain the recommendation.
+![AWS](https://img.shields.io/badge/AWS-SAM-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![Lambda](https://img.shields.io/badge/Lambda-Node.js%2020-FF9900?style=for-the-badge&logo=awslambda&logoColor=white)
+![Bedrock](https://img.shields.io/badge/Amazon-Bedrock%20%7C%20Nova%20Lite-0B5FFF?style=for-the-badge&logo=amazonaws&logoColor=white)
+![Cognito](https://img.shields.io/badge/Auth-Cognito-DD344C?style=for-the-badge&logo=amazonaws&logoColor=white)
+![DynamoDB](https://img.shields.io/badge/DynamoDB-Per--user%20history-4053D6?style=for-the-badge&logo=amazondynamodb&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-00D4FF?style=for-the-badge)
 
-[Explore the 3D showcase](docs/3d-showcase/index.html) · [Architecture diagram](assets/readme/architecture.png) · [Deployment template](template.yaml)
+**An authenticated web app that turns application requirements into an explainable AWS architecture.**
+Deterministic rules choose the services. Amazon Bedrock only explains the decision, and never changes it.
+
+[Quick Start](#-quick-start) · [Features](#-features) · [Architecture](#-system-architecture) · [Rule Engine](#-the-rule-engine) · [API](#-api-reference) · [Roadmap](#-roadmap)
 
 </div>
 
 ---
 
-## The vision
-
-CloudArchitect AI turns a small set of workload requirements into a readable, explainable AWS architecture recommendation. It is designed to make early architecture decisions easier to explore—not to pretend that a generated diagram is a production-ready deployment.
-
-The project separates **service selection** from **natural-language explanation**:
-
-- A deterministic recommendation engine selects services from workload inputs and explicit rules.
-- Amazon Bedrock is an explanation layer only; its response does not change the selected services.
-- If Bedrock is unavailable, the backend can return a deterministic fallback explanation.
-- The app classifies relative cost as **Low**, **Medium**, or **High**. This is a qualitative category, not a live AWS pricing estimate.
+## 🌌 Preview
 
 <div align="center">
-  <img src="assets/readme/hero.png" alt="High-resolution CloudArchitect AI hero artwork: a glowing cloud, AI core, orbital particles and serverless components" width="100%">
-  <sub>Hero artwork · static fallback for the animated preview above</sub>
+
+<!-- Replace these with your real screenshots / GIF (put them in /docs/media) -->
+<img src="docs/media/hero.png" alt="CloudArchitect AI hero with 3D cloud hologram" width="90%"/>
+
+<br/><br/>
+
+| Architecture Studio | Interactive Graph | Service Inspector |
+|:---:|:---:|:---:|
+| <img src="docs/media/studio.png" width="280"/> | <img src="docs/media/graph.png" width="280"/> | <img src="docs/media/inspector.png" width="280"/> |
+
 </div>
 
-## What is implemented
+> 💡 **Tip:** Record a 10-second GIF of the hero page and the graph (ScreenToGif / Kap / LICEcap) and save it as `docs/media/demo.gif`. A GIF on top of a README roughly doubles engagement.
 
-<div align="center">
-  <img src="assets/readme/features.png" alt="Visual feature overview showing deterministic selection, Bedrock explanations, interactive graph, cost category, Cognito authentication, DynamoDB history and graph exports" width="100%">
-</div>
+---
 
-| Capability | Current implementation |
-|---|---|
-| Architecture recommendations | Rule-based service selection in `backend/recommendationEngine.js` |
-| AI explanation | Optional Amazon Bedrock invocation; configured model defaults to Amazon Nova Lite |
-| Fallback explanation | Deterministic explanation if Bedrock cannot be used |
-| Authentication | Amazon Cognito sign-up, email verification, sign-in and sign-out |
-| API protection | API Gateway Cognito authorizer |
-| Saved history | Per-user recommendation persistence in DynamoDB |
-| Architecture graph | Interactive frontend graph with node inspection, pan and zoom |
-| Cost category | Relative Low / Medium / High classification |
-| Graph export | PNG and SVG exports |
-| Infrastructure | AWS SAM / CloudFormation template and Bash / PowerShell deployment scripts |
-| Tests | Node.js assertions for core recommendation rules |
+## ✨ Features
 
-The feature list intentionally describes the supplied source code, not a speculative roadmap. JSON export, live cost estimation, one-click provisioning of recommended workloads, and a design-comparison workflow are **not** claimed as implemented here.
+| | Capability | Details |
+|---|---|---|
+| 🧠 | **Deterministic recommendation engine** | Same input always gives the same architecture. Fully unit-tested, no AI guesswork in service selection. |
+| 🤖 | **Bedrock explanation layer** | Amazon Nova Lite explains *why* the services fit, in beginner-friendly language, with a graceful offline fallback. |
+| 🌐 | **Interactive architecture graph** | Click nodes to inspect decisions, drag to pan, scroll to zoom, export as **SVG** or **PNG**. |
+| 🧊 | **3D-style premium UI** | Floating cloud hologram, orbital rings, parallax service nodes, glassmorphism panels, dark theme. |
+| 🔐 | **Secure by default** | Cognito sign-up, email verification and sign-in. API Gateway protected by a Cognito authorizer. |
+| 💾 | **Per-user history** | Saved designs stored in DynamoDB and isolated by user ID, with encryption at rest and point-in-time recovery. |
+| 🌳 | **Decision tree and health checks** | See which rule fired and which engineering checks apply to your requirements. |
+| 💲 | **Qualitative cost category** | Low / Medium / High planning indicator. It is not a price quote. |
+| 🚀 | **One-command deploy** | Bash and PowerShell scripts deploy the stack, inject generated IDs into the frontend and upload it to S3. |
+| 🛡️ | **Graceful degradation** | If Bedrock is unavailable, the app still works and shows a built-in explanation. |
 
-## Technology constellation
+---
 
-<div align="center">
-  <img src="assets/readme/technology.png" alt="Technology constellation for HTML, CSS, JavaScript, Node.js, AWS SAM, Lambda, API Gateway, Cognito, DynamoDB, Bedrock and CloudFormation" width="100%">
-</div>
+## 🏗️ System Architecture
 
-- **Frontend:** HTML5, CSS3, vanilla JavaScript
-- **Backend:** Node.js 20 AWS Lambda
-- **API:** Amazon API Gateway (REST API)
-- **Identity:** Amazon Cognito User Pools
-- **Persistence:** Amazon DynamoDB
-- **AI explanation:** Amazon Bedrock (model configurable through `BedrockModelId`, default `amazon.nova-lite-v1:0`)
-- **Infrastructure:** AWS SAM and AWS CloudFormation
-- **Static hosting:** Amazon S3 website endpoint
-- **Developer tooling:** AWS CLI, AWS SAM CLI, npm, Bash or PowerShell
+```mermaid
+flowchart LR
+    U([👤 User]) --> S3W[🪣 S3 Static Website<br/>HTML · CSS · JS]
+    U -- sign up / sign in --> COG[🔐 Amazon Cognito]
+    S3W -- JWT --> APIGW[🚪 API Gateway<br/>Cognito Authorizer]
+    APIGW --> LAM[⚡ Lambda<br/>Node.js 20 · arm64]
+    LAM --> ENG{{🧠 Deterministic<br/>Rule Engine}}
+    LAM -- explain only --> BR[🤖 Amazon Bedrock<br/>Nova Lite]
+    LAM <--> DDB[(🗄️ DynamoDB<br/>per-user history)]
+    LAM -.-> CW[📊 CloudWatch + X-Ray]
 
-## System architecture
-
-<div align="center">
-  <img src="assets/readme/architecture.gif" alt="Animated architecture diagram showing the browser frontend, Cognito authentication, API Gateway, Lambda recommendation engine, Bedrock explanation layer and DynamoDB saved history" width="100%">
-  <img src="assets/readme/architecture.png" alt="Static high-resolution architecture diagram for CloudArchitect AI" width="100%">
-</div>
+    classDef aws fill:#0B1B33,stroke:#00D4FF,color:#fff,stroke-width:2px;
+    class S3W,COG,APIGW,LAM,BR,DDB,CW,ENG aws;
+```
 
 ### Request flow
 
 ```mermaid
-flowchart TD
-    U[User] --> FE[Static frontend<br/>HTML · CSS · JavaScript]
-    FE -->|Sign up / sign in| COG[Amazon Cognito]
-    FE -->|ID token + HTTPS request| API[Amazon API Gateway]
-    COG -. authorizes .-> API
-    API --> L[Node.js AWS Lambda]
-    L --> R[Deterministic recommendation engine]
-    R --> OUT[Selected AWS services + cost category]
-    L -. explanation request .-> BR[Amazon Bedrock]
-    BR -. explanation only .-> L
-    L -->|Save / history| DDB[(Amazon DynamoDB)]
-    L --> API
-    API --> FE
+sequenceDiagram
+    autonumber
+    actor User
+    participant FE as Frontend (S3)
+    participant C as Cognito
+    participant API as API Gateway
+    participant L as Lambda
+    participant B as Bedrock
+    participant D as DynamoDB
+
+    User->>FE: Open app
+    FE->>C: Sign in (SRP)
+    C-->>FE: JWT
+    User->>FE: Submit requirements
+    FE->>API: POST /recommend (JWT)
+    API->>L: Authorized request
+    L->>L: Rule engine selects services
+    L->>B: Explain this fixed architecture
+    B-->>L: Explanation (or fallback)
+    L-->>FE: Services + cost + explanation
+    User->>FE: Save design
+    FE->>API: POST /recommendations
+    API->>L: Save
+    L->>D: Put item (userId = Cognito sub)
 ```
 
-**Important distinction:** the services shown inside a generated recommendation are output suggestions. The deployment stack provisions the CloudArchitect AI application itself; it does not provision every service recommended for a hypothetical workload.
+---
 
-## How it works
+## 🧠 The Rule Engine
 
-1. The user creates an account, verifies the email address and signs in through Cognito.
-2. The frontend sends application type, expected users, budget priority, database preference, availability requirement and authentication preference to the API.
-3. API Gateway validates the Cognito identity token before invoking Lambda.
-4. The deterministic engine selects a service set and a qualitative cost category.
-5. Bedrock may generate a human-readable explanation of that result. It is not the decision engine.
-6. The user can inspect the returned architecture graph and export the graph as PNG or SVG.
-7. Saved recommendations are written to DynamoDB under the user's identity and can be retrieved through History.
+The engine in [`backend/recommendationEngine.js`](backend/recommendationEngine.js) is the single source of truth. **Bedrock never adds, removes or replaces a service.**
 
-## Repository map
+| Requirement | Rule |
+|---|---|
+| **Always** | `S3` + `API Gateway` + `CloudWatch` |
+| Users ≤ 10,000 (small) | `Lambda` |
+| Users ≤ 100,000 (medium) | `Lambda` + `CloudFront` |
+| Users > 100,000 (large) | `Fargate` + `Application Load Balancer` + `CloudFront` |
+| Database = Relational | `RDS / Aurora` (Multi-AZ advised when high availability is chosen) |
+| Database = NoSQL | `DynamoDB` |
+| Authentication enabled | `Cognito` |
+| High availability | `CloudFront` + `Route 53` |
+| **Always (last)** | `Bedrock`, used for the explanation only |
 
-```text
-CloudArchitect-AI/
-├── README.md
-├── template.yaml                    # AWS SAM / CloudFormation resources
-├── backend/
-│   ├── app.js                        # Lambda handler, API routes, Bedrock and history
-│   ├── recommendationEngine.js       # Deterministic selection rules
-│   ├── recommendationEngine.test.js  # Rule-engine assertions
-│   └── package.json
-├── frontend/
-│   ├── index.html                    # Application markup
-│   ├── styles.css                    # Application styling
-│   ├── app.js                        # Auth, API calls, graph, exports and history
-│   └── config.js                     # Deployment-generated frontend configuration
-├── scripts/
-│   ├── deploy.sh                     # macOS / Linux deployment
-│   ├── deploy.ps1                    # Windows PowerShell deployment
-│   └── write_config.py               # Writes CloudFormation outputs to config.js
-├── assets/
-│   └── readme/
-│       ├── hero.gif
-│       ├── hero.png
-│       ├── hero.svg
-│       ├── architecture.gif
-│       ├── architecture.png
-│       ├── architecture.svg
-│       ├── features.png
-│       ├── features.svg
-│       ├── technology.png
-│       └── technology.svg
-└── docs/
-    └── 3d-showcase/
-        └── index.html                # Standalone interactive CSS 3D showcase
-```
+**Cost category.** A weighted score over traffic, database type, availability, authentication and budget priority maps to `Low` (≤ 2), `Medium` (3 to 5) or `High` (6+).
 
-## Run locally
+**Trade-off detection.** For example, a *low budget* paired with *large traffic* raises a warning note.
 
-### Requirements
+---
 
-- Node.js 20 or newer and npm
-- Python 3 for helper scripts if needed
-- AWS CLI and AWS credentials for deployment
-- AWS SAM CLI for validating, building and deploying the stack
+## ⚡ Quick Start
 
-### Check the recommendation engine
+### Prerequisites
 
-From the repository root:
+- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html), configured (`aws configure` or SSO)
+- [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
+- [Node.js 20+](https://nodejs.org/) and npm
+- IAM permissions for CloudFormation, Lambda, API Gateway, Cognito, DynamoDB, S3, IAM roles and Bedrock invoke
+- *(Optional)* Amazon Nova Lite access in your region. Without it, the fallback explanation is used.
+
+### 🍎 macOS / 🐧 Linux
 
 ```bash
-npm --prefix backend install
-node backend/recommendationEngine.test.js
-```
+git clone https://github.com/<your-username>/CloudArchitect-AI.git
+cd CloudArchitect-AI
 
-The test file uses Node's built-in `assert` module; no separate test runner is required.
-
-### Preview the frontend
-
-The frontend is a static site. From the repository root, start a simple local server:
-
-```bash
-python -m http.server 8000 --directory frontend
-```
-
-Then open `http://localhost:8000`.
-
-The application needs valid Cognito pool IDs, a client ID and an API URL in `frontend/config.js` to authenticate and call the backend. A local static preview without deployed/configured AWS resources can show the interface, but sign-in and recommendation requests will not work. **Do not commit real credentials or account-specific configuration.**
-
-## Deploy to AWS
-
-The provided scripts deploy the SAM stack, read CloudFormation outputs, write the generated frontend configuration, and sync the frontend to the S3 website bucket.
-
-### macOS / Linux
-
-```bash
 chmod +x scripts/deploy.sh
 ./scripts/deploy.sh cloudarchitect-ai
 ```
 
-Set `AWS_REGION` first if you want a region other than the script's default `us-east-1`.
-
-### Windows PowerShell
+### 🪟 Windows (PowerShell)
 
 ```powershell
+git clone https://github.com/<your-username>/CloudArchitect-AI.git
+cd CloudArchitect-AI
+
 .\scripts\deploy.ps1 -StackName cloudarchitect-ai -Region us-east-1
 ```
 
-### Prerequisites and notes
+The script will:
 
-1. Configure the AWS CLI for the intended account and region.
-2. Install AWS SAM CLI and Node.js 20+.
-3. Ensure the deployer can create/manage the resources in `template.yaml`, including IAM roles/policies, Lambda, API Gateway, Cognito, DynamoDB and S3.
-4. Review Amazon Bedrock model access and regional availability. If invocation is unavailable, the app is designed to fall back to a deterministic explanation.
-5. Review the generated stack, costs and security posture before using it outside a demo.
+1. ✅ Install backend dependencies and run the unit tests
+2. ✅ Validate, build and deploy the SAM stack
+3. ✅ Read the CloudFormation outputs and write them into `frontend/config.js`
+4. ✅ Sync the frontend to the S3 website bucket
+5. ✅ Print your **Frontend URL** 🎉
 
-The deployment currently publishes the static frontend through an **HTTP S3 website endpoint** and configures public object reads for the website. This is a demo-oriented setup, not a production hosting recommendation. For production, use an HTTPS delivery layer such as CloudFront, tighten CORS to the real origin, review IAM permissions, and apply a full security review before exposing the application.
+### 🔧 Manual deployment
 
-To remove the deployed stack, first review the resources and data you intend to retain, then delete the CloudFormation stack from the AWS console or CLI. DynamoDB history and other resources may be deleted with the stack; back up anything you need first.
+```bash
+npm --prefix backend install --omit=dev
+node backend/recommendationEngine.test.js
+sam validate
+sam build
+sam deploy --guided
+```
 
-## Demo walkthrough
+Then copy the stack outputs (`Region`, `UserPoolId`, `UserPoolClientId`, `ApiUrl`) into `frontend/config.js` and sync `frontend/` to the `FrontendBucketName` bucket.
 
-1. Open the frontend URL printed by the deployment script.
-2. Create an account and verify the email address.
-3. Sign in.
-4. Enter the workload requirements and generate a recommendation.
-5. Select service nodes to inspect their rationale.
-6. Export the architecture graph as PNG or SVG.
-7. Save a recommendation and open **History** to show user-scoped persistence.
-8. Open [`docs/3d-showcase/index.html`](docs/3d-showcase/index.html) locally for the standalone interactive visual experience.
+### 🧪 Run the tests
 
-## Visual assets and GitHub rendering
+```bash
+node backend/recommendationEngine.test.js
+```
 
-GitHub README content does not execute custom JavaScript, CSS or WebGL. The hero and architecture animations are pre-rendered GIFs; the PNGs are static fallbacks. The standalone showcase is a separate HTML document and is not embedded as an interactive scene inside GitHub's README.
+### 🧹 Tear down
 
-All README visuals are stored locally in `assets/readme/`, so the README does not depend on external image hosts.
+```bash
+sam delete --stack-name cloudarchitect-ai
+```
 
-## Limitations
-
-- Recommendations are rule-based and reflect the rules currently encoded in `recommendationEngine.js`.
-- The Low / Medium / High cost category is qualitative; there is no live AWS Pricing API estimate.
-- Bedrock explains a recommendation and does not select or provision services.
-- The app does not automatically deploy the hypothetical architecture it recommends.
-- History persists saved recommendations; it is not a full version-control or design-comparison system.
-- The included S3 website hosting uses HTTP and should be hardened before production use.
-- The standalone 3D showcase is a conceptual visualization, not a live AWS resource map.
-- The supplied test file covers core rule-engine assertions, not end-to-end AWS deployment or browser integration.
-
-## Developer
-
-<div align="center">
-
-**ADARSH MUCHATTE**  
-Information Technology Student · VIT Vellore
-
-[GitHub · @adarshmuchatte-lang](https://github.com/adarshmuchatte-lang)
-
-<sub>BUILD WITH CLARITY · DESIGN WITH INTENT · ENGINEER FOR REALITY</sub>
-
-</div>
+> The frontend bucket must be emptied before the stack can be deleted.
 
 ---
 
+## 🎬 Demo Walkthrough
+
+1. **Create an account**, verify your email, then sign in.
+2. **Describe the workload:** application type, expected users, budget, database, availability, authentication.
+3. Click **Generate architecture**.
+4. Explore the **interactive graph**, the **decision tree**, the **health checklist** and the **service cards**.
+5. Read the **Bedrock explanation** and the design trade-offs.
+6. **Save** the design, then open **History** to see your private, persisted designs.
+7. Export the graph as **SVG** or **PNG**.
+
+---
+
+## 🔌 API Reference
+
+All routes require a Cognito JWT in the `Authorization` header.
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/recommend` | Run the rule engine and return services, cost category and explanation |
+| `POST` | `/recommendations` | Save a generated recommendation for the signed-in user |
+| `GET` | `/recommendations?limit=20` | List saved recommendations (newest first, max 50) |
+
+<details>
+<summary><b>📥 Example request</b></summary>
+
+```json
+POST /recommend
+{
+  "applicationType": "ecommerce",
+  "expectedUsers": 50000,
+  "budget": "medium",
+  "database": "relational",
+  "availability": "high",
+  "authentication": true
+}
+```
+
+</details>
+
+<details>
+<summary><b>📤 Example response (trimmed)</b></summary>
+
+```json
+{
+  "recommendationId": "b3c1…",
+  "trafficClass": "medium",
+  "costCategory": "High",
+  "services": [
+    "Amazon S3", "Amazon API Gateway", "Amazon CloudWatch", "AWS Lambda",
+    "Amazon RDS / Aurora", "Amazon Cognito", "Amazon CloudFront",
+    "Amazon Route 53", "Amazon Bedrock"
+  ],
+  "explanation": { "source": "Amazon Bedrock", "text": "…" }
+}
+```
+
+</details>
+
+---
+
+## 📁 Project Structure
+
+```text
+CloudArchitect-AI/
+├── 📄 template.yaml                  # SAM / CloudFormation infrastructure
+├── 📂 backend/
+│   ├── app.js                        # Lambda handler: routes, Bedrock, DynamoDB
+│   ├── recommendationEngine.js       # Deterministic rule engine
+│   ├── recommendationEngine.test.js  # Unit tests
+│   └── package.json
+├── 📂 frontend/
+│   ├── index.html                    # Architecture Studio UI
+│   ├── styles.css                    # Premium dark / 3D-style theme
+│   ├── app.js                        # Auth, graph, inspector, export
+│   └── config.js                     # Generated at deploy time
+└── 📂 scripts/
+    ├── deploy.sh                     # macOS / Linux deployment
+    ├── deploy.ps1                    # Windows deployment
+    └── write_config.py               # Injects stack outputs into config.js
+```
+
+---
+
+## 🛡️ Security Notes
+
+| Area | Current state |
+|---|---|
+| Authentication | Cognito user pool with email verification and SRP auth flow |
+| Authorization | Cognito authorizer on every API route; data keyed by Cognito `sub` |
+| Data at rest | DynamoDB SSE enabled, point-in-time recovery enabled |
+| Input handling | Server-side normalization and clamping of every input |
+
+**Before going to production, harden these demo defaults:**
+
+- [ ] Restrict `ALLOWED_ORIGIN` and API CORS from `*` to your real domain
+- [ ] Serve the frontend through **CloudFront + HTTPS** (the S3 website endpoint is HTTP only)
+- [ ] Scope the Bedrock IAM policy to the specific model ARN
+- [ ] Add WAF and API throttling or usage limits
+- [ ] Pin the Cognito script (`amazon-cognito-identity-js`) with SRI or bundle it locally
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] Export architecture as CloudFormation / Terraform starter templates
+- [ ] Pricing Calculator integration for real cost ranges
+- [ ] Well-Architected Framework scoring
+- [ ] Compare two designs side by side
+- [ ] Multi-region and disaster-recovery patterns
+- [ ] CI/CD with GitHub Actions
+
+---
+
+## ⚠️ Important Note
+
+CloudArchitect AI is an **educational architecture recommendation prototype**, not a production infrastructure generator. It *recommends* an architecture. It does **not** provision the recommended RDS, Fargate, CloudFront or other services for your hypothetical application. Always validate security, quotas, compliance, resilience and cost before production use.
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome.
+
+1. Fork the repository
+2. Create a branch: `git checkout -b feature/amazing-idea`
+3. Commit: `git commit -m "feat: add amazing idea"`
+4. Push and open a Pull Request
+
+---
+
+## 👥 Team
+
+Built by **CloudCrafters**.
+
+<!-- Replace with real names / GitHub handles -->
+| Name | Role | GitHub |
+|---|---|---|
+| Your Name | Developer | [@your-handle](https://github.com/your-handle) |
+
+---
+
+## 📄 License
+
+Released under the [MIT License](LICENSE).
+
 <div align="center">
-  <sub>CLOUDARCHITECT AI · ARCHITECTURE DECISION SUPPORT, MADE EXPLAINABLE.</sub>
+
+<br/>
+
+**If this project helped you, please consider giving it a ⭐**
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00D4FF,50:0B5FFF,100:050B17&height=140&section=footer" alt="footer wave" width="100%"/>
+
 </div>
